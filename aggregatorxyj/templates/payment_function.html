@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banking Menu</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0faff;">
+    <div style="text-align: center;">
+    <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-bottom: 50px;">
+    <a href="{% url 'deposit' %}" style="text-decoration: none; font-size: 34px; color: #0077cc; background-color: #fff; padding: 10px;">DEPOSIT</a>
+    </h2>
+    <div style="margin: 30px 0;"></div>
+    <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-bottom: 50px;">
+    <a href="{% url 'balance' %}" style="text-decoration: none; font-size: 34px; color: #0077cc; background-color: #fff; padding: 10px;">BALANCE</a>
+    </h2>
+    <div style="margin: 30px 0;"></div>
+    <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-bottom: 50px;">
+    <a href="{% url 'statement' %}" style="text-decoration: none; font-size: 34px; color: #0077cc; background-color: #fff; padding: 10px;">STATEMENT</a>
+    </h2>
+    <div style="margin: 30px 0;"></div>
+    <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-bottom: 50px;">
+    <a href="{% url 'submit_transfer' %}" style="text-decoration: none; font-size: 34px; color: #0077cc; background-color: #fff; padding: 10px;">TRANSFER</a>
+    </h2>
+    </div>
+    </div>
+{% endblock %}
+
+</body>
+</html>

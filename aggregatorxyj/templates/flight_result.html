@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>List</title>
+		<style>
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				margin-bottom: 30px;
+			}
+			th, td {
+				padding: 8px;
+				text-align: center;
+				border-bottom: 1px solid #ddd;
+			}
+			tr:hover {
+				background-color: #f5f5f5;
+			}
+			button {
+				background-color: #0077cc;
+				color: white;
+				padding: 8px 16px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+			button:hover {
+				background-color: #005c9e;
+			}
+		</style>
+	</head>
+	<body>
+		{% extends 'base.html' %}
+		{% block content %}
+		<form method="post">{% csrf_token %}
+			<table>
+				<tr>
+					<th>flight_id</th>
+					<th>dep_airport</th>
+					<th>dest_airport</th>
+					<th>departure_time</th>
+					<th>arrival_time</th>
+					<th>duration</th>
+					<th>seat_price</th>
+					<th>airline_name</th>
+					<th>flight_num</th>
+					<th>aircraft_type</th>
+					<th>spare_seats</th>
+					<th>select</th>
+				</tr>
+				{% for item in flight_list %}
+				<tr>
+					<td>{{ item.flight_id }}</td>
+					<td>{{ item.dep_airport }}</td>
+					<td>{{ item.dest_airport }}</td>
+					<td>{{ item.departure_time }}</td>
+					<td>{{ item.arrival_time }}</td>
+					<td>{{ item.duration }}</td>
+					<td>{{ item.seat_price }}</td>
+					<td>{{ item.airline_name }}</td>
+					<td>{{ item.flight_num }}</td>
+					<td>{{ item.aircraft_type }}</td>
+					<td>{{ item.spare_seats }}</td>
+					<td>
+						<button type="submit"
+								name="submit"
+								value="{{ item.flight_id }}|{{ item.airline_name }}">Select</button>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</form>
+		{% endblock content %}
+	</body>
+</html>

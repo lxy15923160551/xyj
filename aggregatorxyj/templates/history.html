@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        form {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        button:hover {
+            background-color: #005580;
+        }
+    </style>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+<form method="post">{% csrf_token %}
+    <table>
+        <tr>
+            <th>dep_airport</th>
+            <th>dest_airport</th>
+            <th>departure_time</th>
+            <th>arrival_time</th>
+            <th>duration</th>
+            <th>seat_price</th>
+            <th>airline_name</th>
+            <th>flight_num</th>
+            <th>aircraft_type</th>
+            <th>payment_provider</th>
+            <th>order_id</th>
+            <th>select</th>
+        </tr>
+        {% for item in order_list %}
+        <tr>
+            <td>{{ item.dep_airport }}</td>
+            <td>{{ item.dest_airport }}</td>
+            <td>{{ item.departure_time }}</td>
+            <td>{{ item.arrival_time }}</td>
+            <td>{{ item.duration }}</td>
+            <td>{{ item.seat_price }}</td>
+            <td>{{ item.airline_name }}</td>
+            <td>{{ item.flight_num }}</td>
+            <td>{{ item.aircraft_type }}</td>
+            <td>{{ item.payment_provider }}</td>
+            <td>{{ item.order_id }}</td>
+            <td>{{ item.state }}</td>
+            {% if item.state == 'ordered' %}
+            <td>
+                <button type="submit" name="submit" value="{{ item.order_id }}">Cancel</button>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+{% endblock content %}
+</body>
+</html>
